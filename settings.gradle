@@ -1,0 +1,3 @@
+include \
+	"weieditor-mds-core", \
+	"weieditor-mds-webapp"

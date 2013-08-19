@@ -1,0 +1,36 @@
+distsDirName = "distributions"
+distsDir = file("$buildDir/$distsDirName")
+
+allprojects {
+	group = 'com.weieditor.mds'
+	version = '1.0.0'
+}
+
+subprojects {
+}
+
+task dist {
+	subprojects.each { project ->
+		dependsOn ':' + project.name + ':dist'
+	}
+}
+
+dist << {
+	distsDir = file("$buildDir/distributions")
+	subprojects.each { project ->
+		copy {
+			from(project.distsDir) {
+				include '*.zip'
+			}
+			into(distsDir)
+		}
+	}
+}
+
+task cleanDist << {
+	allprojects.each { project ->
+		if (project.distsDir.isDirectory()) {
+			delete project.distsDir.listFiles()
+		}
+	}
+}
