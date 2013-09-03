@@ -1,3 +1,4 @@
 include \
 	"weieditor-mds-core", \
+	"weieditor-mds-rouge", \
 	"weieditor-mds-webapp"
