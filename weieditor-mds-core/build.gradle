@@ -18,8 +18,9 @@ repositories {
 dependencies {
 	compile project(':weieditor-mds-rouge')
     compile (
+    	[group: 'ch.qos.logback', name: 'logback-classic', version: '1.0.11'],
+    	[group: 'org.apache.commons', name: 'commons-lang3', version: '3.1'],
     	[group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'],
-    	[group: 'ch.qos.logback', name: 'logback-classic', version: '1.0.11']
     )
 
     testCompile (

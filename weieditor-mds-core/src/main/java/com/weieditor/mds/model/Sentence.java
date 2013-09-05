@@ -4,7 +4,16 @@ import java.util.List;
 
 public class Sentence {
 
+	private String content;
 	private List<Word> words;
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 
 	public List<Word> getWords() {
 		return words;

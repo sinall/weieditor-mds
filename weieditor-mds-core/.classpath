@@ -2,15 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/test/java"/>
-	<classpathentry kind="src" path="src/test/resources"/>
 	<classpathentry exported="true" kind="src" path="/weieditor-mds-rouge"/>
-	<classpathentry exported="true" kind="lib" path="C:/Documents and Settings/ibmsz/.gradle/caches/artifacts-23/filestore/ch.qos.logback/logback-classic/1.0.11/jar/5864376e5a8a1b347fc2d1a8f12f077071acaa24/logback-classic-1.0.11.jar" sourcepath="C:/Documents and Settings/ibmsz/.gradle/caches/artifacts-23/filestore/ch.qos.logback/logback-classic/1.0.11/source/d06df4d67b8df51485899a38c194bcb339c35a75/logback-classic-1.0.11-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Documents and Settings/ibmsz/.gradle/caches/artifacts-23/filestore/ch.qos.logback/logback-core/1.0.11/jar/24e57b2020138cfa96f191e7a8cc02bc6c6d34f6/logback-core-1.0.11.jar" sourcepath="C:/Documents and Settings/ibmsz/.gradle/caches/artifacts-23/filestore/ch.qos.logback/logback-core/1.0.11/source/adb84fbbaab92cbab4890ebc8967c1f1eb7935db/logback-core-1.0.11-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Documents and Settings/ibmsz/.gradle/caches/artifacts-23/filestore/junit/junit/4.11/jar/4e031bb61df09069aeb2bffb4019e7a5034a4ee0/junit-4.11.jar" sourcepath="C:/Documents and Settings/ibmsz/.gradle/caches/artifacts-23/filestore/junit/junit/4.11/source/28e0ad201304e4a4abf999ca0570b7cffc352c3c/junit-4.11-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Documents and Settings/ibmsz/.gradle/caches/artifacts-23/filestore/org.hamcrest/hamcrest-all/1.3/jar/63a21ebc981131004ad02e0434e799fd7f3a8d5a/hamcrest-all-1.3.jar" sourcepath="C:/Documents and Settings/ibmsz/.gradle/caches/artifacts-23/filestore/org.hamcrest/hamcrest-all/1.3/source/47e033b7ab18c5dbd5fe29fc1bd5a40afe028818/hamcrest-all-1.3-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Documents and Settings/ibmsz/.gradle/caches/artifacts-23/filestore/org.hamcrest/hamcrest-core/1.3/jar/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar" sourcepath="C:/Documents and Settings/ibmsz/.gradle/caches/artifacts-23/filestore/org.hamcrest/hamcrest-core/1.3/source/1dc37250fbc78e23a65a67fbbaf71d2e9cbc3c0b/hamcrest-core-1.3-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Documents and Settings/ibmsz/.gradle/caches/artifacts-23/filestore/org.mockito/mockito-all/1.9.5/jar/79a8984096fc6591c1e3690e07d41be506356fa5/mockito-all-1.9.5.jar" sourcepath="C:/Documents and Settings/ibmsz/.gradle/caches/artifacts-23/filestore/org.mockito/mockito-all/1.9.5/source/b8086d4e4daa361fc746abea62f77a2ae55d3ed9/mockito-all-1.9.5-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Documents and Settings/ibmsz/.gradle/caches/artifacts-23/filestore/org.slf4j/slf4j-api/1.7.5/jar/6b262da268f8ad9eff941b25503a9198f0a0ac93/slf4j-api-1.7.5.jar" sourcepath="C:/Documents and Settings/ibmsz/.gradle/caches/artifacts-23/filestore/org.slf4j/slf4j-api/1.7.5/source/654135274d4c27132ea208a4ec07f344bdb83bcb/slf4j-api-1.7.5-sources.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="org.springsource.ide.eclipse.gradle.classpathcontainer"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
