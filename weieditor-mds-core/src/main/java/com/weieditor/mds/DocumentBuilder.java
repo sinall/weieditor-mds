@@ -1,10 +1,7 @@
 package com.weieditor.mds;
 
-import java.io.StringReader;
-import java.util.List;
 import java.util.Scanner;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.weieditor.mds.model.Article;
@@ -24,9 +21,9 @@ public class DocumentBuilder {
 			if (StringUtils.isNotBlank(pContent)) {
 				Paragraph p = new Paragraph();
 				p.setContent(pContent.trim());
-				String[] sentenceContents = pContent.split("[\\.¡£]+");
+				String[] sentenceContents = pContent.split("[\\.ã€‚]+");
 				for (String sentenceContent : sentenceContents) {
-					sentenceContent += "¡£";
+					sentenceContent += "ã€‚";
 					Sentence sentence = new Sentence();
 					sentence.setContent(sentenceContent.trim());
 
