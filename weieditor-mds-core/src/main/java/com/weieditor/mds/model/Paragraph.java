@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Paragraph {
 
-	private String content;
+	private String content = "";
 	private List<Sentence> sentences = new ArrayList<Sentence>();
 
 	public String getContent() {

@@ -2,8 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="src" path="src/test/resources"/>
 	<classpathentry exported="true" kind="src" path="/weieditor-mds-rouge"/>
+	<classpathentry exported="true" kind="lib" path="E:/Workspace/Projects/weieditor-mds/weieditor-mds-core/lib/ictclas4j-1.1.0-SNAPSHOT.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="con" path="org.springsource.ide.eclipse.gradle.classpathcontainer"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,11 +1,12 @@
 package com.weieditor.mds.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sentence {
 
-	private String content;
-	private List<Word> words;
+	private String content = "";
+	private List<Word> words = new ArrayList<Word>();
 
 	public String getContent() {
 		return content;
