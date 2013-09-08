@@ -14,11 +14,11 @@ import com.weieditor.mds.model.Sentence;
 import com.weieditor.mds.model.Speech;
 import com.weieditor.mds.model.Word;
 
-public class DocumentBuilderImplTest {
+public class DocumentParserImplTest {
 
 	@Test
 	public void should_parse_article() {
-		DocumentBuilderImpl builder = new DocumentBuilderImpl(new IctclasSegmenter());
+		DocumentParserImpl builder = new DocumentParserImpl(new IctclasSegmenter());
 		ArticleBuilder articleBuilder = new ArticleBuilder();
 		Article article = articleBuilder
 				.withTitle("国资委官员称从4月起文件批复就不再请示蒋洁敏")

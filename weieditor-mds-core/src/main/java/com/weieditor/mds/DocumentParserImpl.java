@@ -11,12 +11,12 @@ import com.weieditor.mds.model.Paragraph;
 import com.weieditor.mds.model.Sentence;
 import com.weieditor.mds.model.Word;
 
-public class DocumentBuilderImpl implements DocumentBuilder {
+public class DocumentParserImpl implements DocumentParser {
 	
 	private final String TERMINATOR = "。";
 	private Segmenter segmenter;
 
-	public DocumentBuilderImpl(Segmenter segmenter) {
+	public DocumentParserImpl(Segmenter segmenter) {
 		this.segmenter = segmenter;
 	}
 

@@ -1,13 +1,12 @@
 package com.weieditor.mds;
 
-import java.util.List;
-
 import com.weieditor.mds.model.Document;
+import com.weieditor.mds.model.MultiDocument;
 
 public class SensitiveToContextSummarizer implements Summarizer {
 
 	@Override
-	public Document summarize(List<Document> docs) {
+	public Document summarize(MultiDocument multiDoc) {
 		Document doc = new Document();
 		return doc;
 	}

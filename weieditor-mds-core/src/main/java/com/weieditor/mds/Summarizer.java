@@ -1,11 +1,10 @@
 package com.weieditor.mds;
 
-import java.util.List;
-
 import com.weieditor.mds.model.Document;
+import com.weieditor.mds.model.MultiDocument;
 
 public interface Summarizer {
 
-	public Document summarize(List<Document> docs);
+	public Document summarize(MultiDocument multiDoc);
 
 }

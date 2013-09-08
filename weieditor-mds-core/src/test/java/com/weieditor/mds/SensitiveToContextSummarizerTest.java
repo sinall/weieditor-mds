@@ -2,20 +2,18 @@ package com.weieditor.mds;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
 
 import com.weieditor.mds.model.Document;
+import com.weieditor.mds.model.MultiDocument;
 
 public class SensitiveToContextSummarizerTest {
 
 	@Test
 	public void should_summarize_docs() {
 		SensitiveToContextSummarizer summarizer = new SensitiveToContextSummarizer();
-		List<Document> docs = new ArrayList<Document>();
-		Document doc = summarizer.summarize(docs);
+		MultiDocument multiDoc = new MultiDocument();
+		Document doc = summarizer.summarize(multiDoc);
 		assertNotNull(doc);
 	}
 }

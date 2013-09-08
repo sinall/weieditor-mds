@@ -1,5 +1,7 @@
 package com.weieditor.mds.model;
 
+import com.weieditor.mds.visitor.DocumentVisitor;
+
 public class Word {
 
 	private String value = "";
@@ -24,6 +26,15 @@ public class Word {
 
 	public void setSpeech(Speech speech) {
 		this.speech = speech;
+	}
+
+	public void accept(DocumentVisitor docVisitor) {
+		docVisitor.visit(this);
+	}
+
+	@Override
+	public String toString() {
+		return "Word [value=" + value + ", speech=" + speech + "]";
 	}
 
 	@Override
@@ -54,5 +65,4 @@ public class Word {
 		return true;
 	}
 
-	
 }

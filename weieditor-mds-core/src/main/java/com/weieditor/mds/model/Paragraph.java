@@ -3,6 +3,8 @@ package com.weieditor.mds.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.weieditor.mds.visitor.DocumentVisitor;
+
 public class Paragraph {
 
 	private String content = "";
@@ -26,6 +28,14 @@ public class Paragraph {
 
 	public void add(Sentence sentence) {
 		sentences.add(sentence);
+	}
+
+	public void accept(DocumentVisitor docVisitor) {
+		docVisitor.visit(this);
+		for (Sentence sentence : sentences) {
+			sentence.accept(docVisitor);
+		}
+
 	}
 
 }
