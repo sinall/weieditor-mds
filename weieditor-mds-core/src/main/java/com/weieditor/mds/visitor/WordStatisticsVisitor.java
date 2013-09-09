@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.weieditor.mds.WordStatistics;
 import com.weieditor.mds.model.Document;
 import com.weieditor.mds.model.MultiDocument;
 import com.weieditor.mds.model.Paragraph;
@@ -12,7 +13,7 @@ import com.weieditor.mds.model.Sentence;
 import com.weieditor.mds.model.Speech;
 import com.weieditor.mds.model.Word;
 
-public class WordStatisticsVisitor implements DocumentVisitor {
+public class WordStatisticsVisitor implements DocumentVisitor, WordStatistics {
 
 	private static Set<Speech> candidateSpeechs;
 	private int wordNumber;

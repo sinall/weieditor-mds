@@ -7,25 +7,29 @@ import com.weieditor.mds.visitor.DocumentVisitor;
 
 public class Paragraph {
 
-	private int docId;
-	private int id;
+	private Document doc;
+	private int paragraphId;
 	private String content = "";
 	private List<Sentence> sentences = new ArrayList<Sentence>();
 
-	public int getDocId() {
-		return docId;
+	public Paragraph(Document doc, int paragraphId) {
+		this.doc = doc;
 	}
 
-	public void setDocId(int docId) {
-		this.docId = docId;
+	public Document getDoc() {
+		return doc;
 	}
 
-	public int getId() {
-		return id;
+	public void setDoc(Document doc) {
+		this.doc = doc;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public int getParagraphId() {
+		return paragraphId;
+	}
+
+	public void setParagraphId(int id) {
+		this.paragraphId = id;
 	}
 
 	public String getContent() {
@@ -58,6 +62,34 @@ public class Paragraph {
 			sentence.accept(docVisitor);
 		}
 
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((doc == null) ? 0 : doc.hashCode());
+		result = prime * result + paragraphId;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Paragraph other = (Paragraph) obj;
+		if (doc == null) {
+			if (other.doc != null)
+				return false;
+		} else if (!doc.equals(other.doc))
+			return false;
+		if (paragraphId != other.paragraphId)
+			return false;
+		return true;
 	}
 
 }

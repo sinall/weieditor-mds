@@ -7,15 +7,15 @@ import com.weieditor.mds.visitor.DocumentVisitor;
 
 public class Document {
 
-	private int id;
+	private int docId;
 	private List<Paragraph> paragraphs = new ArrayList<Paragraph>();
 
-	public int getId() {
-		return id;
+	public int getDocId() {
+		return docId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setDocId(int docId) {
+		this.docId = docId;
 	}
 
 	public List<Paragraph> getParagraphs() {
@@ -45,7 +45,7 @@ public class Document {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + docId;
 		return result;
 	}
 
@@ -58,7 +58,7 @@ public class Document {
 		if (getClass() != obj.getClass())
 			return false;
 		Document other = (Document) obj;
-		if (id != other.id)
+		if (docId != other.docId)
 			return false;
 		return true;
 	}

@@ -7,25 +7,30 @@ import com.weieditor.mds.visitor.DocumentVisitor;
 
 public class Sentence {
 
-	private int paragraphId;
-	private int id;
+	private Paragraph paragraph;
+	private int sentenceId;
 	private String content = "";
 	private List<Word> words = new ArrayList<Word>();
 
-	public int getParagraphId() {
-		return paragraphId;
+	public Sentence(Paragraph p, int sentenceId) {
+		this.paragraph = p;
+		this.sentenceId = sentenceId;
 	}
 
-	public void setParagraphId(int paragraphId) {
-		this.paragraphId = paragraphId;
+	public Paragraph getParagraph() {
+		return paragraph;
 	}
 
-	public int getId() {
-		return id;
+	public void setParagraph(Paragraph paragraph) {
+		this.paragraph = paragraph;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public int getSentenceId() {
+		return sentenceId;
+	}
+
+	public void setSentenceId(int id) {
+		this.sentenceId = id;
 	}
 
 	public String getContent() {
@@ -55,8 +60,9 @@ public class Sentence {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
-		result = prime * result + paragraphId;
+		result = prime * result
+				+ ((paragraph == null) ? 0 : paragraph.hashCode());
+		result = prime * result + sentenceId;
 		return result;
 	}
 
@@ -69,11 +75,15 @@ public class Sentence {
 		if (getClass() != obj.getClass())
 			return false;
 		Sentence other = (Sentence) obj;
-		if (id != other.id)
+		if (paragraph == null) {
+			if (other.paragraph != null)
+				return false;
+		} else if (!paragraph.equals(other.paragraph))
 			return false;
-		if (paragraphId != other.paragraphId)
+		if (sentenceId != other.sentenceId)
 			return false;
 		return true;
 	}
+
 
 }

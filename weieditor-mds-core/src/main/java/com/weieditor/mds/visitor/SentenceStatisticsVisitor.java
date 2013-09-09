@@ -15,7 +15,7 @@ public class SentenceStatisticsVisitor implements DocumentVisitor {
 	private WordStatistics wordStatistics;
 	private Map<Sentence, Double> sentenceWeightMapping = new HashMap<Sentence, Double>();
 
-	private SentenceStatisticsVisitor(WordStatistics wordStatistics) {
+	public SentenceStatisticsVisitor(WordStatistics wordStatistics) {
 		super();
 		this.wordStatistics = wordStatistics;
 	}
@@ -38,7 +38,7 @@ public class SentenceStatisticsVisitor implements DocumentVisitor {
 		double totalWeight = 0;
 		int candidateWordNum = 0;
 		for (Word word : sentence.getWords()) {
-			double weight = wordStatistics.getWeight(word);
+			double weight = wordStatistics.getWordWeight(word);
 			if (weight > 0) {
 				totalWeight += weight;
 				candidateWordNum++;

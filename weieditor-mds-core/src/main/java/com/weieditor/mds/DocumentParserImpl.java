@@ -12,7 +12,7 @@ import com.weieditor.mds.model.Sentence;
 import com.weieditor.mds.model.Word;
 
 public class DocumentParserImpl implements DocumentParser {
-	
+
 	private final String TERMINATOR = "。";
 	private Segmenter segmenter;
 
@@ -26,15 +26,16 @@ public class DocumentParserImpl implements DocumentParser {
 
 		String content = article.getContent();
 		Scanner scanner = new Scanner(content);
-		while (scanner.hasNextLine()) {
+		for (int i = 0; scanner.hasNextLine(); i++) {
 			String pContent = scanner.nextLine();
 			if (StringUtils.isNotBlank(pContent)) {
-				Paragraph p = new Paragraph();
+				Paragraph p = new Paragraph(doc, i + 1);
 				p.setContent(pContent.trim());
 				String[] sentenceContents = pContent.split(TERMINATOR);
-				for (String sentenceContent : sentenceContents) {
+				for (int j = 0; j < sentenceContents.length; j++) {
+					String sentenceContent = sentenceContents[j];
 					sentenceContent += TERMINATOR;
-					Sentence sentence = new Sentence();
+					Sentence sentence = new Sentence(p, j + 1);
 					sentence.setContent(sentenceContent);
 					List<Word> words = segmenter.segment(sentenceContent);
 					sentence.setWords(words);

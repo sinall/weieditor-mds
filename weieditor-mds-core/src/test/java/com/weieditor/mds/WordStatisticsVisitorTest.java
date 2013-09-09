@@ -15,7 +15,7 @@ import com.weieditor.mds.visitor.WordStatisticsVisitor;
 public class WordStatisticsVisitorTest {
 
 	@Test
-	public void should_count_word_occurences() {
+	public void should_calculate_word_weight() {
 		WordStatisticsVisitor visitor = new WordStatisticsVisitor();
 		ArticleBuilder articleBuilder = new ArticleBuilder();
 		Article article = articleBuilder.withContent(

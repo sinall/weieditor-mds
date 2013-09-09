@@ -4,6 +4,6 @@ import com.weieditor.mds.model.Word;
 
 public interface WordStatistics {
 
-	double getWeight(Word word);
+	double getWordWeight(Word word);
 
 }
