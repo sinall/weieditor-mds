@@ -14,7 +14,7 @@ import com.weieditor.mds.model.Sentence;
 import com.weieditor.mds.visitor.SentenceWeightVisitor;
 import com.weieditor.mds.visitor.WordWeightVisitor;
 
-public class SentenceStatisticsVisitorTest {
+public class SentenceWeightVisitorTest {
 
 	@Test
 	public void should_calculate_sentence_weight() {

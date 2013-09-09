@@ -15,7 +15,7 @@ import com.weieditor.mds.model.Speech;
 import com.weieditor.mds.model.Word;
 import com.weieditor.mds.visitor.WordWeightVisitor;
 
-public class WordStatisticsVisitorTest {
+public class WordWeightVisitorTest {
 
 	@Test
 	public void should_calculate_word_weight() {
