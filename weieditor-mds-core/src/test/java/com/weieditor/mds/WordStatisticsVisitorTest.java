@@ -32,9 +32,9 @@ public class WordStatisticsVisitorTest {
 		assertThat(visitor.getOccurrences(new Word("城镇", Speech.NOUN)),
 				equalTo(2));
 		double occurrenceProbability1 = visitor
-				.getOccurrenceProbability(new Word("农民", Speech.NOUN));
+				.getWordWeight(new Word("农民", Speech.NOUN));
 		double occurrenceProbability2 = visitor
-				.getOccurrenceProbability(new Word("城镇", Speech.NOUN));
+				.getWordWeight(new Word("城镇", Speech.NOUN));
 		assertThat(occurrenceProbability2 / occurrenceProbability1,
 				equalTo(2.0));
 	}

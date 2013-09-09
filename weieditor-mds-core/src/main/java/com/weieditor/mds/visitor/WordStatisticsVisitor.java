@@ -26,7 +26,7 @@ public class WordStatisticsVisitor implements DocumentVisitor {
 		candidateSpeechs.add(Speech.VERB);
 	}
 
-	public double getOccurrenceProbability(Word word) {
+	public double getWordWeight(Word word) {
 		int occurrences = getOccurrences(word);
 		return (double) occurrences / wordNumber;
 	}
