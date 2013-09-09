@@ -14,6 +14,7 @@ public class Paragraph {
 
 	public Paragraph(Document doc, int paragraphId) {
 		this.doc = doc;
+		this.paragraphId = paragraphId;
 	}
 
 	public Document getDoc() {

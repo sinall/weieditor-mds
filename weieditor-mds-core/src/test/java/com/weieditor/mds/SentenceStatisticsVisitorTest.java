@@ -30,8 +30,13 @@ public class SentenceStatisticsVisitorTest {
 		multiDoc.accept(wordVisitor);
 		multiDoc.accept(sentenceVisitor);
 
-		Sentence sentence = new Sentence(new Paragraph(doc, 1), 1);
-		assertTrue(sentenceVisitor.getSentenceWeight(sentence) > 0.0);
+		Sentence sentence1 = new Sentence(new Paragraph(doc, 1), 1);
+		double weight1 = sentenceVisitor.getSentenceWeight(sentence1);
+		assertTrue(weight1 > 0.0);
+
+		Sentence sentence2 = new Sentence(new Paragraph(doc, 2), 1);
+		double weight2 = sentenceVisitor.getSentenceWeight(sentence2);
+		assertTrue(weight2 > 0.0);
 	}
 
 }
