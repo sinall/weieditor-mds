@@ -1,28 +1,25 @@
 package com.weieditor.mds.visitor;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.weieditor.mds.WordStatistics;
 import com.weieditor.mds.model.Document;
 import com.weieditor.mds.model.MultiDocument;
 import com.weieditor.mds.model.Paragraph;
 import com.weieditor.mds.model.Sentence;
 import com.weieditor.mds.model.Word;
 
-public class SentenceStatisticsVisitor implements DocumentVisitor {
+public class SentenceWeightVisitor implements DocumentVisitor {
 
-	private WordStatistics wordStatistics;
-	private Map<Sentence, Double> sentenceWeightMapping = new HashMap<Sentence, Double>();
+	private Map<Word, Double> wordWeightMapping;
+	private Map<Sentence, Double> sentenceWeightMapping = new LinkedHashMap<Sentence, Double>();
 
-	public SentenceStatisticsVisitor(WordStatistics wordStatistics) {
-		super();
-		this.wordStatistics = wordStatistics;
+	public SentenceWeightVisitor(Map<Word, Double> wordWeightMapping) {
+		this.wordWeightMapping = wordWeightMapping;
 	}
 
-	public double getSentenceWeight(Sentence sentence) {
-		Double weight = sentenceWeightMapping.get(sentence);
-		return weight;
+	public Map<Sentence, Double> getSentenceWeightMapping() {
+		return sentenceWeightMapping;
 	}
 
 	public void visit(MultiDocument multiDocument) {
@@ -38,8 +35,8 @@ public class SentenceStatisticsVisitor implements DocumentVisitor {
 		double totalWeight = 0;
 		int candidateWordNum = 0;
 		for (Word word : sentence.getWords()) {
-			double weight = wordStatistics.getWordWeight(word);
-			if (weight > 0) {
+			Double weight = wordWeightMapping.get(word);
+			if (weight != null && weight > 0) {
 				totalWeight += weight;
 				candidateWordNum++;
 			}

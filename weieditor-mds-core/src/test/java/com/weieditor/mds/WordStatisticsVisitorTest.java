@@ -2,6 +2,9 @@ package com.weieditor.mds;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -10,13 +13,13 @@ import com.weieditor.mds.model.Document;
 import com.weieditor.mds.model.MultiDocument;
 import com.weieditor.mds.model.Speech;
 import com.weieditor.mds.model.Word;
-import com.weieditor.mds.visitor.WordStatisticsVisitor;
+import com.weieditor.mds.visitor.WordWeightVisitor;
 
 public class WordStatisticsVisitorTest {
 
 	@Test
 	public void should_calculate_word_weight() {
-		WordStatisticsVisitor visitor = new WordStatisticsVisitor();
+		WordWeightVisitor visitor = new WordWeightVisitor();
 		ArticleBuilder articleBuilder = new ArticleBuilder();
 		Article article = articleBuilder.withContent(
 				"李克强:新型城镇化要真正惠及农民\n要让新型城镇化路子走好走顺").build();
@@ -27,14 +30,13 @@ public class WordStatisticsVisitorTest {
 
 		multiDoc.accept(visitor);
 
-		assertThat(visitor.getOccurrences(new Word("农民", Speech.NOUN)),
-				equalTo(1));
-		assertThat(visitor.getOccurrences(new Word("城镇", Speech.NOUN)),
-				equalTo(2));
-		double occurrenceProbability1 = visitor
-				.getWordWeight(new Word("农民", Speech.NOUN));
-		double occurrenceProbability2 = visitor
-				.getWordWeight(new Word("城镇", Speech.NOUN));
+		Map<Word, Double> wordWeightMapping = visitor.getWordWeightMapping();
+		double occurrenceProbability1 = wordWeightMapping.get(new Word("农民",
+				Speech.NOUN));
+		double occurrenceProbability2 = wordWeightMapping.get(new Word("城镇",
+				Speech.NOUN));
+		assertTrue(occurrenceProbability2 > 0);
+		assertTrue(occurrenceProbability2 < 1);
 		assertThat(occurrenceProbability2 / occurrenceProbability1,
 				equalTo(2.0));
 	}
