@@ -1,10 +1,12 @@
 package com.weieditor.mds;
 
-import com.weieditor.mds.model.Document;
-import com.weieditor.mds.model.MultiDocument;
+import com.weieditor.mds.model.Article;
+import com.weieditor.mds.model.MultiArticle;
 
 public interface Summarizer {
 
-	public Document summarize(MultiDocument multiDoc);
+	public void setConfiguration(Configuration conf);
+
+	public Article summarize(MultiArticle multiArticle);
 
 }

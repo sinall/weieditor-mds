@@ -4,17 +4,17 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import com.weieditor.mds.model.Document;
-import com.weieditor.mds.model.MultiDocument;
+import com.weieditor.mds.model.Article;
+import com.weieditor.mds.model.MultiArticle;
 
 public class SpectralClusteringSummarizerTest {
 
 	@Test
 	public void should_summarize_single_doc() {
 		SpectralClusteringSummarizer summarizer = new SpectralClusteringSummarizer();
-		MultiDocument multiDoc = new MultiDocument();
-		Document doc = summarizer.summarize(multiDoc);
-		assertNotNull(doc);
+		MultiArticle multiArticle = new MultiArticle();
+		Article article = summarizer.summarize(multiArticle);
+		assertNotNull(article);
 	}
 
 }

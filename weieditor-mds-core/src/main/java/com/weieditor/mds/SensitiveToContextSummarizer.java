@@ -6,7 +6,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import com.weieditor.mds.model.Article;
 import com.weieditor.mds.model.Document;
+import com.weieditor.mds.model.MultiArticle;
 import com.weieditor.mds.model.MultiDocument;
 import com.weieditor.mds.model.Paragraph;
 import com.weieditor.mds.model.Sentence;
@@ -19,22 +21,29 @@ import com.weieditor.mds.visitor.WordWeightVisitor;
 public class SensitiveToContextSummarizer implements Summarizer {
 
 	private static final double LOW_WEIGHT = 0.0001;
-	private int lengthLimit = 200;
 	private Map<Word, Double> wordWeightMapping;
 	private Map<Sentence, Double> sentenceWeightMapping;
 	private Map<Sentence, Boolean> sentencePickedMapping = new LinkedHashMap<Sentence, Boolean>();
+	private Configuration conf;
+	private MultiDocumentParser multiDocParser;
 
-	public SensitiveToContextSummarizer(int lengthLimit) {
-		this.lengthLimit = lengthLimit;
+	public SensitiveToContextSummarizer(MultiDocumentParser multiDocParser) {
+		this.multiDocParser = multiDocParser;
 	}
 
 	@Override
-	public Document summarize(MultiDocument multiDoc) {
+	public void setConfiguration(Configuration conf) {
+		this.conf = conf;
+	}
+
+	@Override
+	public Article summarize(MultiArticle multiArticle) {
 		Document doc = new Document();
 		Paragraph p = new Paragraph(doc, 1);
 		doc.add(p);
 
 		WordWeightVisitor wordVisitor = new WordWeightVisitor();
+		MultiDocument multiDoc = multiDocParser.parse(multiArticle);
 		multiDoc.accept(wordVisitor);
 		wordWeightMapping = wordVisitor.getWordWeightMapping();
 		SentenceWeightVisitor sentenceVistor = new SentenceWeightVisitor(
@@ -59,7 +68,10 @@ public class SensitiveToContextSummarizer implements Summarizer {
 			}
 		}
 
-		return doc;
+		ArticleTransformer articleTransformer = new ArticleTransformer();
+		Article article = articleTransformer.transform(doc);
+
+		return article;
 	}
 
 	private void resetWordWeight(Sentence sentence) {
@@ -108,7 +120,7 @@ public class SensitiveToContextSummarizer implements Summarizer {
 		int length = docVisitor.getLength();
 		boolean unpickedSentenceExists = sentencePickedMapping.values()
 				.contains(false);
-		return length < lengthLimit && unpickedSentenceExists;
+		return length < conf.getLengthLimit() && unpickedSentenceExists;
 	}
 
 }
