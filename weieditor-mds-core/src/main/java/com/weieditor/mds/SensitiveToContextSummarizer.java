@@ -80,6 +80,9 @@ public class SensitiveToContextSummarizer implements Summarizer {
 				.entrySet();
 		Entry<Sentence, Double> pickedEntry = null;
 		for (Entry<Sentence, Double> entry : entrySet) {
+			if (sentencePickedMapping.get(entry.getKey())) {
+				continue;
+			}
 			if (pickedEntry == null) {
 				pickedEntry = entry;
 			} else if (entry.getValue() > pickedEntry.getValue()) {
@@ -103,7 +106,9 @@ public class SensitiveToContextSummarizer implements Summarizer {
 			}
 		}
 		int length = docVisitor.getLength();
-		return length < lengthLimit;
+		boolean unpickedSentenceExists = sentencePickedMapping.values()
+				.contains(false);
+		return length < lengthLimit && unpickedSentenceExists;
 	}
 
 }

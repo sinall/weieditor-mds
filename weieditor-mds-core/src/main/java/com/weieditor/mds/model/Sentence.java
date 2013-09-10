@@ -57,6 +57,12 @@ public class Sentence {
 	}
 
 	@Override
+	public String toString() {
+		return "Sentence [sentenceId=" + sentenceId + ", content=" + content
+				+ "]";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -84,6 +90,5 @@ public class Sentence {
 			return false;
 		return true;
 	}
-
 
 }
