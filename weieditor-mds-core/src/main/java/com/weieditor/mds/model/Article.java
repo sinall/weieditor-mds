@@ -59,4 +59,11 @@ public class Article {
 		this.source = source;
 	}
 
+	@Override
+	public String toString() {
+		return "Article [title=" + title + ", content=" + content + ", url="
+				+ url + ", date=" + date + ", author=" + author + ", source="
+				+ source + "]";
+	}
+
 }
