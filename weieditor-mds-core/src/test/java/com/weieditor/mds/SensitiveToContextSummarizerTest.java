@@ -27,10 +27,11 @@ public class SensitiveToContextSummarizerTest {
 	public void should_summarize_single_doc() {
 		conf.setLengthLimit(10);
 		MultiArticle multiArticle = new MultiArticle();
-		addArticle(multiArticle, 1,
+		addArticle(multiArticle, 1, "新型城镇化要真正惠及农民",
 				"李克强:新型城镇化要真正惠及农民\n要让新型城镇化路子走好走顺\n城镇化好，城镇化好，城镇化好");
 		Article article = summarizer.summarize(multiArticle);
 
+		assertThat(article.getTitle(), equalTo("新型城镇化要真正惠及农民"));
 		assertThat(article.getContent(), equalTo("城镇化好，城镇化好，城镇化好。"));
 	}
 
@@ -38,10 +39,11 @@ public class SensitiveToContextSummarizerTest {
 	public void should_summarize_multi_docs() {
 		conf.setLengthLimit(10);
 		MultiArticle multiArticle = new MultiArticle();
-		addArticle(multiArticle, 1, "李克强:新型城镇化要真正惠及农民\n要让新型城镇化路子走好走顺");
-		addArticle(multiArticle, 2, "城镇化好，城镇化好，城镇化好");
+		addArticle(multiArticle, 1, "李克强:新型城镇化要真正惠及农民", "李克强:新型城镇化要真正惠及农民\n要让新型城镇化路子走好走顺");
+		addArticle(multiArticle, 2, "城镇化好，城镇化好，城镇化好", "城镇化好，城镇化好，城镇化好");
 		Article article = summarizer.summarize(multiArticle);
 
+		assertThat(article.getTitle(), equalTo("城镇化好，城镇化好，城镇化好"));
 		assertThat(article.getContent(), equalTo("城镇化好，城镇化好，城镇化好。"));
 	}
 
@@ -49,17 +51,19 @@ public class SensitiveToContextSummarizerTest {
 	public void should_summarize_multi_docs_2() {
 		conf.setLengthLimit(20);
 		MultiArticle multiArticle = new MultiArticle();
-		addArticle(multiArticle, 1, "李克强:新型城镇化要真正惠及农民\n要让新型城镇化路子走好走顺");
-		addArticle(multiArticle, 2, "城镇化好，城镇化好，城镇化好");
+		addArticle(multiArticle, 1, "", "李克强:新型城镇化要真正惠及农民\n要让新型城镇化路子走好走顺");
+		addArticle(multiArticle, 2, "", "城镇化好，城镇化好，城镇化好");
 		Article article = summarizer.summarize(multiArticle);
 
 		assertThat(article.getContent(),
 				equalTo("李克强:新型城镇化要真正惠及农民。城镇化好，城镇化好，城镇化好。"));
 	}
 
-	private void addArticle(MultiArticle multiArticle, int docId, String content) {
+	private void addArticle(MultiArticle multiArticle, int docId, String title,
+			String content) {
 		ArticleBuilder articleBuilder = new ArticleBuilder();
-		Article article = articleBuilder.withContent(content).build();
+		Article article = articleBuilder.withTitle(title).withContent(content)
+				.build();
 		multiArticle.add(article);
 	}
 

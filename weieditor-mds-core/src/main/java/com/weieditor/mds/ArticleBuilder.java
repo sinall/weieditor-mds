@@ -4,8 +4,8 @@ import com.weieditor.mds.model.Article;
 
 public class ArticleBuilder {
 
-	private String title;
-	private String content;
+	private String title = "";
+	private String content = "";
 
 	public Article build() {
 		Article article = new Article();

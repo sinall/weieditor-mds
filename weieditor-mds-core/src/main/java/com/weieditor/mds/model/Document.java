@@ -8,6 +8,7 @@ import com.weieditor.mds.visitor.DocumentVisitor;
 public class Document {
 
 	private int docId;
+	private Title title;
 	private List<Paragraph> paragraphs = new ArrayList<Paragraph>();
 
 	public int getDocId() {
@@ -16,6 +17,14 @@ public class Document {
 
 	public void setDocId(int docId) {
 		this.docId = docId;
+	}
+
+	public Title getTitle() {
+		return title;
+	}
+
+	public void setTitle(Title title) {
+		this.title = title;
 	}
 
 	public List<Paragraph> getParagraphs() {
@@ -36,6 +45,9 @@ public class Document {
 
 	public void accept(DocumentVisitor docVisitor) {
 		docVisitor.visit(this);
+		if (title != null) {
+			title.accept(docVisitor);
+		}
 		for (Paragraph p : paragraphs) {
 			p.accept(docVisitor);
 		}

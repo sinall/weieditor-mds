@@ -10,17 +10,17 @@ import com.weieditor.mds.model.Sentence;
 import com.weieditor.mds.model.Title;
 import com.weieditor.mds.model.Word;
 
-public class SentenceWeightVisitor implements DocumentVisitor {
+public class TitleWeightVisitor implements DocumentVisitor {
 
 	private Map<Word, Double> wordWeightMapping;
-	private Map<Sentence, Double> sentenceWeightMapping = new LinkedHashMap<Sentence, Double>();
+	private Map<Title, Double> titleWeightMapping = new LinkedHashMap<Title, Double>();
 
-	public SentenceWeightVisitor(Map<Word, Double> wordWeightMapping) {
+	public TitleWeightVisitor(Map<Word, Double> wordWeightMapping) {
 		this.wordWeightMapping = wordWeightMapping;
 	}
 
-	public Map<Sentence, Double> getSentenceWeightMapping() {
-		return sentenceWeightMapping;
+	public Map<Title, Double> getTitleWeightMapping() {
+		return titleWeightMapping;
 	}
 
 	public void visit(MultiDocument multiDocument) {
@@ -30,15 +30,9 @@ public class SentenceWeightVisitor implements DocumentVisitor {
 	}
 
 	public void visit(Title title) {
-	}
-
-	public void visit(Paragraph paragraph) {
-	}
-
-	public void visit(Sentence sentence) {
 		double totalWeight = 0;
 		int candidateWordNum = 0;
-		for (Word word : sentence.getWords()) {
+		for (Word word : title.getWords()) {
 			Double weight = wordWeightMapping.get(word);
 			if (weight != null && weight > 0) {
 				totalWeight += weight;
@@ -50,7 +44,13 @@ public class SentenceWeightVisitor implements DocumentVisitor {
 		if (candidateWordNum != 0) {
 			weight = totalWeight / candidateWordNum;
 		}
-		sentenceWeightMapping.put(sentence, weight);
+		titleWeightMapping.put(title, weight);
+	}
+
+	public void visit(Paragraph paragraph) {
+	}
+
+	public void visit(Sentence sentence) {
 	}
 
 	public void visit(Word word) {

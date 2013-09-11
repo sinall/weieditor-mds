@@ -4,6 +4,7 @@ import com.weieditor.mds.model.Document;
 import com.weieditor.mds.model.MultiDocument;
 import com.weieditor.mds.model.Paragraph;
 import com.weieditor.mds.model.Sentence;
+import com.weieditor.mds.model.Title;
 import com.weieditor.mds.model.Word;
 
 public class ArticleTransformerVisitor implements DocumentVisitor {
@@ -15,24 +16,22 @@ public class ArticleTransformerVisitor implements DocumentVisitor {
 		return content;
 	}
 
-	@Override
 	public void visit(MultiDocument multiDocument) {
 	}
 
-	@Override
 	public void visit(Document document) {
 	}
 
-	@Override
+	public void visit(Title title) {
+	}
+
 	public void visit(Paragraph paragraph) {
 	}
 
-	@Override
 	public void visit(Sentence sentence) {
 		stringBuilder.append(sentence.getContent());
 	}
 
-	@Override
 	public void visit(Word word) {
 	}
 

@@ -12,6 +12,7 @@ import com.weieditor.mds.model.MultiDocument;
 import com.weieditor.mds.model.Paragraph;
 import com.weieditor.mds.model.Sentence;
 import com.weieditor.mds.model.Speech;
+import com.weieditor.mds.model.Title;
 import com.weieditor.mds.model.Word;
 
 public class WordWeightVisitor implements DocumentVisitor {
@@ -45,6 +46,9 @@ public class WordWeightVisitor implements DocumentVisitor {
 	}
 
 	public void visit(Document document) {
+	}
+
+	public void visit(Title title) {
 	}
 
 	public void visit(Paragraph paragraph) {
