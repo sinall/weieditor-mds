@@ -11,10 +11,14 @@ public class IctclasSegmenter implements Segmenter {
 
 	private static final int SEG_PATH_COUNT = 1;
 	private IctclasSegResultParser parser = new IctclasSegResultParser();
+	private SegTag segTag;
+
+	public IctclasSegmenter() {
+		segTag = new SegTag(SEG_PATH_COUNT);
+	}
 
 	@Override
 	public List<Word> segment(String text) {
-		SegTag segTag = new SegTag(SEG_PATH_COUNT);
 		SegResult segResult = segTag.split(text);
 		String segmentedText = segResult.getFinalResult();
 		List<Word> words = parser.parse(segmentedText);
