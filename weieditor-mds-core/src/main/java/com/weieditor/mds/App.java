@@ -31,7 +31,9 @@ public class App {
 			ArticleBuilder articleBuilder = new ArticleBuilder();
 			String content = IOUtils.toString(new FileInputStream(docFile),
 					Charsets.UTF_8);
-			Article article = articleBuilder.withTitle(docFile.getName())
+			String fileName = docFile.getName();
+			String title = fileName.replaceAll("\\.txt$", "");
+			Article article = articleBuilder.withTitle(title)
 					.withContent(content).build();
 			multiArticle.add(article);
 		}
